@@ -19,4 +19,37 @@ pip install python-dotenv openai streamlit
 
 ## Create .env file for secrets
 Create a `.env` to store the secrets. 
- 
+
+```bash
+ENDPOINT=""
+KEY=""
+API-VERSION=""
+
+MODEL-DEPLOYMENT-NAME=""
+```
+
+## Use Jupyter Notebook to test your code
+Use Jupyter Notebook to test your code. This is a great way to explore fast and fail fast. 
+
+Please refer the notebook in this repo, file name ending with `.ipynb`.
+
+Sample code block:
+```python
+
+```
+
+## Test the Streamlit
+Streamlit is a great library to do a quick PoC. This helps build and host web interface for any kind of application with minimal effort. 
+
+Save a file as `demoweb.py`
+
+```python
+# Sample Streamlit code
+```
+
+## Run the Streamlit app locally
+To run the Streamlit app for the file `demoweb.py` locally, type the below command,
+
+```sh
+streamlit run demoweb.py
+```
