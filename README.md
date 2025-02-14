@@ -21,11 +21,18 @@ pip install python-dotenv openai streamlit
 Create a `.env` to store the secrets. 
 
 ```bash
-ENDPOINT=""
-KEY=""
-API-VERSION=""
+OPENAI_API_VERSION = "2024-07-01-preview"
+OPENAI_EMBEDDING_API_VERSION = "2024-07-01-preview"
 
-MODEL-DEPLOYMENT-NAME=""
+AZURE_OPENAI_API_KEY = ""
+AZURE_OPENAI_ENDPOINT = ""
+
+AZURE_OPENAI_COMPLETION_MODEL = ""
+AZURE_OPENAI_COMPLETION_DEPLOYMENT_NAME = ""
+
+DEPLOYMENT_ENDPOINT=""
+DEPLOYMENT_NAME=""
+DEPLOYMENT_TOKEN=""
 ```
 
 ## Use Jupyter Notebook to test your code
@@ -85,4 +92,14 @@ To run the Streamlit app for the file `demoweb.py` locally, type the below comma
 streamlit run demoweb.py
 ```
 
-## 
+## Dockerfil
+
+## Build docker image
+
+## Run Docker locally
+
+## Connect to the DockerHub
+
+## Push the local docker image to DockerHub
+
+## Deploy it to Azure Container App/Kubernetes/AppService/Azure Container Instance
