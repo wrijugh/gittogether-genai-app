@@ -1,0 +1,1 @@
+pip install streamlit deepseek azure.ai.inference python-dotenv

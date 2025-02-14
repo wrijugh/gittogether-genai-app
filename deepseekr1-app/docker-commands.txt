@@ -1,0 +1,9 @@
+docker rmi wrijughosh/deepseek-web:v2 --force
+
+docker build -t wrijughosh/deepseek-web:v2 .
+
+docker run -p 8501:8501  wrijughosh/deepseek-web:v2
+
+docker login [wriju_ghosh@hotmail.com/SL..]
+
+docker push wrijughosh/deepseek-web:v2 
