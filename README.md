@@ -13,12 +13,12 @@ Here we will use Python. But you can select any programming language of your cho
 Install the following Python libraries: `python-dotenv`, `openai`, `streamlit`
 
 ```sh
-pip install python-dotenv openai streamlit
+pip install streamlit deepseek azure.ai.inference python-dotenv
 ```
 > **Note:** In your machine pip3 might work.
 
 ## Create .env file for secrets
-Create a `.env` to store the secrets. 
+Create a file with the name `.env` to store the secrets. 
 
 ```bash
 DEPLOYMENT_ENDPOINT=""
@@ -75,11 +75,19 @@ docker run -p 8501:8501  wrijughosh/deepseek-web:v3
 ```sh
 docker login
 ```
+Follow the instrunction and provide additional information.
 
 ## Push the local docker image to DockerHub
 
 ```sh
 docker push wrijughosh/deepseek-web:v3
 ```
+Screen should display the process and confirm the success.
 
 ## Deploy it to Azure Container App/Kubernetes/AppService/Azure Container Instance
+
+Refer Azure documentation to know more about how to deploy an existing container image to one of the above platform. 
+
+Thank you.
+
+@wrijugh [14-February-2025]
