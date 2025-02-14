@@ -1,0 +1,1 @@
+# gittogether-genai-app
