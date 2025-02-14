@@ -21,15 +21,6 @@ pip install python-dotenv openai streamlit
 Create a `.env` to store the secrets. 
 
 ```bash
-OPENAI_API_VERSION = "2024-07-01-preview"
-OPENAI_EMBEDDING_API_VERSION = "2024-07-01-preview"
-
-AZURE_OPENAI_API_KEY = ""
-AZURE_OPENAI_ENDPOINT = ""
-
-AZURE_OPENAI_COMPLETION_MODEL = ""
-AZURE_OPENAI_COMPLETION_DEPLOYMENT_NAME = ""
-
 DEPLOYMENT_ENDPOINT=""
 DEPLOYMENT_NAME=""
 DEPLOYMENT_TOKEN=""
@@ -40,66 +31,55 @@ Use Jupyter Notebook to test your code. This is a great way to explore fast and 
 
 Please refer the notebook in this repo, file name ending with `.ipynb`.
 
-```python
-# Jupyter Notebook sample code
-import openai
-import os
-from dotenv import load_dotenv
-
-# Load environment variables
-if load_dotenv():
-    print("Found Azure OpenAI API Base Endpoint: " + os.getenv("AZURE_OPENAI_ENDPOINT"))
-else: 
-    print("Azure OpenAI API Base Endpoint not found. Have you configured the .env file?")
-
-
-from openai import AzureOpenAI
-
-client = AzureOpenAI(
-    azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT"),
-    api_key = os.getenv("AZURE_OPENAI_API_KEY"),
-    api_version = os.getenv("OPENAI_API_VERSION")
-)
-
-
-userprompt = "Bellandu, Bengaluru" # st.text_input('Locality where you want to find vegan restaurants', 'Bellandur, Bengaluru')
-
-# if st.button('Submit'):
-response = client.chat.completions.create(
-model = os.getenv("AZURE_OPENAI_COMPLETION_DEPLOYMENT_NAME"),
-messages = [{"role" : "assistant", "content" : "Tell the resturants which serves vegan. in the area : " + userprompt}],
-)
-
-
-print(response.choices[0].message.content)
-
-
-```
+[Deepseek-R1 Python Jupyter Notebook](deepseekr1-app/deepseekr1-test.ipynb)
 
 ## Test the Streamlit
 Streamlit is a great library to do a quick PoC. This helps build and host web interface for any kind of application with minimal effort. 
 
-Save a file as `demoweb.py`
+Save a file such as [dseekweb.py](deepseekr1-app/dseekweb.py)
 
-```python
-# Sample Streamlit code
-```
 
 ## Run the Streamlit app locally
 To run the Streamlit app for the file `demoweb.py` locally, type the below command,
 
 ```sh
-streamlit run demoweb.py
+streamlit run dseekweb.py
 ```
 
 ## Dockerfil
 
+[DeepSeekR1-App Dockerfile](deepseekr1-app/Dockerfile)
+
+>Check the last line in above Dockerfile  
+```sh
+ENTRYPOINT ["streamlit", "run", "dseekweb.py", "--server.port=8501", "--server.address=0.0.0.0"]
+```
+
 ## Build docker image
+
+```sh
+docker build -t wrijughosh/deepseek-web:v3 .
+```
+>**Note:** `wrijughosh` is the name of public docker hub account based on which the repo will be created. Use proper name as per your information. 
+
 
 ## Run Docker locally
 
+```sh
+docker run -p 8501:8501  wrijughosh/deepseek-web:v3
+```
+
+
 ## Connect to the DockerHub
 
+```sh
+docker login
+```
+
 ## Push the local docker image to DockerHub
+
+```sh
+docker push wrijughosh/deepseek-web:v3
+```
 
 ## Deploy it to Azure Container App/Kubernetes/AppService/Azure Container Instance
